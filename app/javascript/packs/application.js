@@ -11,6 +11,8 @@ import 'css/site'
 import 'jquery'
 import 'popper.js'
 import 'bootstrap'
+import 'css/tv_shows'
+import 'css/episodes'
 
 Rails.start()
 Turbolinks.start()

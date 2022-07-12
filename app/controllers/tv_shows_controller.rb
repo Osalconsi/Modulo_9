@@ -22,7 +22,8 @@ class TvShowsController < ApplicationController
 
   # POST /tv_shows or /tv_shows.json
   def create
-    @tv_show = TvShow.new(tv_show_params)
+    @tv_show = current_user.tv_shows.build(tv_show_params)
+    #@tv_show = TvShow.new(tv_show_params)
     @tv_show.nationality = Nationality.last || Nationality.find(params[:tv_show][:nationality_id])
     respond_to do |format|
         if @tv_show.save
@@ -36,6 +37,9 @@ class TvShowsController < ApplicationController
 end
 
   # PATCH/PUT /tv_shows/1 or /tv_shows/1.json
+
+  before_action :authenticate_user!, except: %i[index]
+
   def update
     respond_to do |format|
       if @tv_show.update(tv_show_params)
@@ -75,6 +79,7 @@ end
     end
 
     # modificar el método tv_show_params para que nos guarde los attributos anidados en la tabla film_localtions
+    # genre_ids: almacenar un array con los generos seleccionados
     def tv_show_params
       params.require(:tv_show).permit(
           :name,
@@ -82,7 +87,8 @@ end
           :release_date,
           :rating,
           :nationality_id,
-          film_locations_attributes: [:id, :name, :indoor]
+          film_locations_attributes: [:id, :name, :indoor],
+          genre_ids: []
           )
   end
 end

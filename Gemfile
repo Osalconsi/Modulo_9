@@ -6,7 +6,7 @@ ruby '3.0.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.5'
 # Use postgresql as the database for Active Record
-gem 'pg', '~> 1.1'
+gem 'pg', '~> 1.3', '>= 1.3.5'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets
@@ -21,6 +21,12 @@ gem 'jbuilder', '~> 2.7'
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+
+gem 'cloudinary'
+gem 'dotenv-rails', groups: [:development, :test]
+
+#gema para hacer loggin en device
+gem 'devise', '~> 4.8', '>= 4.8.1'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

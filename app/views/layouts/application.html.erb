@@ -11,6 +11,20 @@
   </head>
 
   <body>
+  <br><br>
+
+    <% if user_signed_in? %>
+            <div>
+                <p>Bienvenido <%= current_user.email %>!!</p>
+                <button type="button" class="btn btn-outline-danger"><%= link_to 'Log out', destroy_user_session_path, method: :delete %></button>
+            </div>
+        <% else %>
+            <div>
+                <button type="button" class="btn btn-outline-primary"><%= link_to 'Sign up', new_user_registration_path %></button> |
+                <button type="button" class="btn btn-outline-success"><%= link_to 'Log in', new_user_session_path %></button>
+            </div>
+        <% end %>
+
     <%= yield %>
   </body>
 </html>

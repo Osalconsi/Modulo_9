@@ -31,8 +31,30 @@
     <%= form.text_field :rating %>
   </div>
 
+ <fieldset style="width:270px">
+  <legend>Film locations</legend>
+
+   <ul class="field">
+     <%= form.fields_for :film_locations do |film_locations_form| %>
+         <li>
+            <%= film_locations_form.label :name %>
+            <%= film_locations_form.text_field :name %>
+
+            <%= film_locations_form.label :indoor %>
+            <%= film_locations_form.check_box :indoor %>
+         </li>
+     <% end %>
+   </ul>
+ </fieldset>
+
   <div class="field">
     <%= collection_select(:tv_show, :nationality_id, Nationality.all, :id, :name, prompt: true) %>
+  </div>
+
+  <div class="field">
+    <%= form.collection_select(:genre_ids, Genre.all, :id, :name,{ prompt: true }, { multiple: true }) %>
+    <!-- <%= form.collection_check_boxes :genre_ids, Genre.all, :id, :name %>
+    da forma de selección mútiple -->
   </div>
 
   <div class="actions">

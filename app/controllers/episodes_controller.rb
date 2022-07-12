@@ -5,6 +5,7 @@ class EpisodesController < ApplicationController
     redirect_to tv_show_path(@tv_show)
 end
 
+
 private
 def episode_params
     params.require(:episode).permit(:episode_number, :title, :summary)
